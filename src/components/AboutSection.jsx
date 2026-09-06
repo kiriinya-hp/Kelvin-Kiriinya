@@ -132,37 +132,100 @@ export default function AboutSection() {
   return (
     <>
       <style>{`
+        /* Hide mobile-specific layout wrapper by default on desktop */
+        .mobile-stats-stack {
+          display: none;
+        }
+
         @media (max-width: 900px) {
           .about-section {
-            padding: 4rem 1rem !important;
+            padding: 3.5rem 1rem !important;
           }
-          .about-header-wrapper {
-            padding-left: 1rem !important;
-          }
-          .about-heading {
-            font-size: 2rem !important;
-          }
-          .about-content-grid {
+          .about-container {
             gap: 2rem !important;
           }
+          .about-header-wrapper {
+            border-left-width: 3px !important;
+            padding-left: 0.85rem !important;
+          }
+          .about-subtitle {
+            font-size: 0.8rem !important;
+            letter-spacing: 0.03em !important;
+          }
+          .about-heading {
+            font-size: 1.75rem !important;
+            line-height: 1.2 !important;
+          }
+          .about-content-grid {
+            gap: 1.5rem !important;
+          }
+          .about-text {
+            font-size: 0.9rem !important;
+            line-height: 1.6 !important;
+          }
           .about-experience-card {
-            padding: 1.25rem !important;
+            padding: 1.15rem !important;
+            borderRadius: 0.75rem !important;
+            margin-bottom: 0.75rem !important;
           }
-          .about-stat-card {
-            padding: 1.25rem !important;
+          .about-exp-title {
+            font-size: 1rem !important;
           }
-          .about-stat-number {
-            font-size: 2rem !important;
+          .about-exp-badge {
+            font-size: 0.7rem !important;
+            padding: 0.2rem 0.5rem !important;
+          }
+          .about-exp-period {
+            font-size: 0.75rem !important;
+            margin-bottom: 0.5rem !important;
+          }
+          .about-exp-desc {
+            font-size: 0.85rem !important;
+          }
+
+          /* Hide original desktop stats grid on mobile */
+          .desktop-stats-grid {
+            display: none !important;
+          }
+
+          /* Completely modified vertical layout for stats on mobile */
+          .mobile-stats-stack {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 0.75rem !important;
+            width: 100% !important;
+          }
+          .mobile-stat-row {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%) !important;
+            border: 1px solid #1e293b !important;
+            padding: 1rem 1.25rem !important;
+            borderRadius: 0.75rem !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+          }
+          .mobile-stat-label {
+            font-size: 0.85rem !important;
+            color: #94a3b8 !important;
+            font-weight: 600 !important;
+            text-align: left !important;
+          }
+          .mobile-stat-value {
+            font-size: 1.35rem !important;
+            font-weight: 800 !important;
+            color: #f97316 !important;
+            letter-spacing: -0.01em !important;
           }
         }
       `}</style>
 
       <section id="about-me" className="about-section" style={styles.section}>
-        <div style={styles.container}>
+        <div className="about-container" style={styles.container}>
           
           {/* Section Heading */}
           <div className="about-header-wrapper" style={styles.headerWrapper}>
-            <div style={styles.subtitle}>System Architecture & Background</div>
+            <div className="about-subtitle" style={styles.subtitle}>System Architecture & Background</div>
             <h2 className="about-heading" style={styles.heading}>About Me</h2>
           </div>
 
@@ -171,43 +234,59 @@ export default function AboutSection() {
             
             {/* Bio Side */}
             <div style={styles.bioColumn}>
-              <p style={styles.text}>
-                {personalInfo.bio} Student at {personalInfo.institution}.
+              <p className="about-text" style={styles.text}>
+                {personalInfo.bio} Student at {personalInfo.institution}[cite: 14].
               </p>
-              <p style={styles.text}>
+              <p className="about-text" style={styles.text}>
                 I started my journey into tech with a strong drive for learning how systems work from scratch. Since then, this has evolved into full-stack development and hands-on ICT support, fueling my dedication to engineering clean, reliable solutions.
               </p>
             </div>
 
-            {/* Experience Side (Dynamically mapped from portfolioData) */}
+            {/* Experience Side */}
             <div style={styles.experienceColumn}>
               {personalInfo.experience && personalInfo.experience.map((item, index) => (
                 <div key={index} className="about-experience-card" style={styles.experienceCard}>
                   <div style={styles.expTopRow}>
-                    <h3 style={styles.expTitle}>{item.role}</h3>
-                    <span style={styles.expBadge}>{item.company}</span>
+                    <h3 className="about-exp-title" style={styles.expTitle}>{item.role}</h3>
+                    <span className="about-exp-badge" style={styles.expBadge}>{item.company}</span>
                   </div>
-                  <div style={styles.expPeriod}>{item.period}</div>
-                  <p style={styles.expDesc}>{item.description}</p>
+                  <div className="about-exp-period" style={styles.expPeriod}>{item.period}</div>
+                  <p className="about-exp-desc" style={styles.expDesc}>{item.description}</p>
                 </div>
               ))}
             </div>
 
           </div>
 
-          {/* Stats Grid */}
-          <div style={styles.statsContainer}>
-            <div className="about-stat-card" style={styles.statCard}>
-              <div className="about-stat-number" style={styles.statNumber}>120+</div>
+          {/* Desktop Stats Grid (Untouched for Big Screens) */}
+          <div className="desktop-stats-grid" style={styles.statsContainer}>
+            <div style={styles.statCard}>
+              <div style={styles.statNumber}>120+</div>
               <div style={styles.statLabel}>Completed Projects</div>
             </div>
-            <div className="about-stat-card" style={styles.statCard}>
-              <div className="about-stat-number" style={styles.statNumber}>95%</div>
+            <div style={styles.statCard}>
+              <div style={styles.statNumber}>95%</div>
               <div style={styles.statLabel}>Client Satisfaction</div>
             </div>
-            <div className="about-stat-card" style={styles.statCard}>
-              <div className="about-stat-number" style={styles.statNumber}>2+</div>
+            <div style={styles.statCard}>
+              <div style={styles.statNumber}>2+</div>
               <div style={styles.statLabel}>Years of Experience</div>
+            </div>
+          </div>
+
+          {/* Completely Modified Mobile Stats View (Vertical Stack Layout) */}
+          <div className="mobile-stats-stack">
+            <div className="mobile-stat-row">
+              <span className="mobile-stat-label">Completed Projects</span>
+              <span className="mobile-stat-value">120+</span>
+            </div>
+            <div className="mobile-stat-row">
+              <span className="mobile-stat-label">Client Satisfaction</span>
+              <span className="mobile-stat-value">95%</span>
+            </div>
+            <div className="mobile-stat-row">
+              <span className="mobile-stat-label">Years of Experience</span>
+              <span className="mobile-stat-value">2+</span>
             </div>
           </div>
 
