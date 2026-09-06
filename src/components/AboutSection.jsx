@@ -137,7 +137,7 @@ export default function AboutSection() {
           {/* Bio Side */}
           <div style={styles.bioColumn}>
             <p style={styles.text}>
-              {personalInfo.bio} Student at {personalInfo.institution}[cite: 6, 9].
+              {personalInfo.bio} Student at {personalInfo.institution}.
             </p>
             <p style={styles.text}>
               I started my journey into tech with a strong drive for learning how systems work from scratch. Since then, this has evolved into full-stack development and hands-on ICT support, fueling my dedication to engineering clean, reliable solutions.
