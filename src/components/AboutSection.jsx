@@ -104,7 +104,7 @@ export default function AboutSection() {
     },
     statsContainer: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(3, 1fr)',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
       gap: '1.5rem',
     },
     statCard: {
@@ -132,6 +132,11 @@ export default function AboutSection() {
   return (
     <>
       <style>{`
+        /* Hide mobile-specific layout wrapper by default on desktop */
+        .mobile-stats-stack {
+          display: none;
+        }
+
         @media (max-width: 900px) {
           .about-section {
             padding: 3.5rem 1rem !important;
@@ -160,7 +165,7 @@ export default function AboutSection() {
           }
           .about-experience-card {
             padding: 1.15rem !important;
-            border-radius: 0.75rem !important;
+            borderRadius: 0.75rem !important;
             margin-bottom: 0.75rem !important;
           }
           .about-exp-title {
@@ -178,21 +183,39 @@ export default function AboutSection() {
             font-size: 0.85rem !important;
           }
 
-          /* Mobile grid layout configured into a vertical column stacking the 3 metric boxes just like the screenshot */
+          /* Hide original desktop stats grid on mobile */
           .desktop-stats-grid {
+            display: none !important;
+          }
+
+          /* Completely modified vertical layout for stats on mobile */
+          .mobile-stats-stack {
             display: flex !important;
             flex-direction: column !important;
-            gap: 1rem !important;
+            gap: 0.75rem !important;
+            width: 100% !important;
           }
-          .about-stat-card {
-            padding: 1.5rem 1rem !important;
-            border-radius: 0.75rem !important;
+          .mobile-stat-row {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%) !important;
+            border: 1px solid #1e293b !important;
+            padding: 1rem 1.25rem !important;
+            borderRadius: 0.75rem !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
           }
-          .about-stat-number {
-            font-size: 2.25rem !important;
-          }
-          .about-stat-label {
+          .mobile-stat-label {
             font-size: 0.85rem !important;
+            color: #94a3b8 !important;
+            font-weight: 600 !important;
+            text-align: left !important;
+          }
+          .mobile-stat-value {
+            font-size: 1.35rem !important;
+            font-weight: 800 !important;
+            color: #f97316 !important;
+            letter-spacing: -0.01em !important;
           }
         }
       `}</style>
@@ -235,19 +258,35 @@ export default function AboutSection() {
 
           </div>
 
-          {/* Stats Grid (Configured to stack vertically on mobile matching your reference layout) */}
+          {/* Desktop Stats Grid (Untouched for Big Screens) */}
           <div className="desktop-stats-grid" style={styles.statsContainer}>
-            <div className="about-stat-card" style={styles.statCard}>
-              <div className="about-stat-number" style={styles.statNumber}>120+</div>
-              <div className="about-stat-label" style={styles.statLabel}>Completed Projects</div>
+            <div style={styles.statCard}>
+              <div style={styles.statNumber}>120+</div>
+              <div style={styles.statLabel}>Completed Projects</div>
             </div>
-            <div className="about-stat-card" style={styles.statCard}>
-              <div className="about-stat-number" style={styles.statNumber}>95%</div>
-              <div className="about-stat-label" style={styles.statLabel}>Client Satisfaction</div>
+            <div style={styles.statCard}>
+              <div style={styles.statNumber}>95%</div>
+              <div style={styles.statLabel}>Client Satisfaction</div>
             </div>
-            <div className="about-stat-card" style={styles.statCard}>
-              <div className="about-stat-number" style={styles.statNumber}>2+</div>
-              <div className="about-stat-label" style={styles.statLabel}>Years of Experience</div>
+            <div style={styles.statCard}>
+              <div style={styles.statNumber}>2+</div>
+              <div style={styles.statLabel}>Years of Experience</div>
+            </div>
+          </div>
+
+          {/* Completely Modified Mobile Stats View (Vertical Stack Layout) */}
+          <div className="mobile-stats-stack">
+            <div className="mobile-stat-row">
+              <span className="mobile-stat-label">Completed Projects</span>
+              <span className="mobile-stat-value">120+</span>
+            </div>
+            <div className="mobile-stat-row">
+              <span className="mobile-stat-label">Client Satisfaction</span>
+              <span className="mobile-stat-value">95%</span>
+            </div>
+            <div className="mobile-stat-row">
+              <span className="mobile-stat-label">Years of Experience</span>
+              <span className="mobile-stat-value">2+</span>
             </div>
           </div>
 
