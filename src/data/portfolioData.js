@@ -2,7 +2,7 @@ export const personalInfo = {
   name: "Kelvin Kiriinya",
   title: "Full-Stack Developer",
   institution: "The Co-operative University of Kenya",
-  bio: "Passionate full-stack developer and student building scalable web applications and learning modern technologies[cite: 11].",
+  bio: "Passionate full-stack developer and student building scalable web applications and learning modern technologies.",
   email: "kiriinyakelvin626@gmail.com",
   phone: "0797722331",
   github: "https://github.com/kiriinya-hp",

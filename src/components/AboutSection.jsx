@@ -66,13 +66,15 @@ export default function AboutSection() {
       overflow: 'hidden',
       boxShadow: '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
       backdropFilter: 'blur(10px)',
+      marginBottom: '1rem',
     },
     expTopRow: {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'flex-start',
-      marginBottom: '0.75rem',
+      marginBottom: '0.5rem',
       gap: '1rem',
+      flexWrap: 'wrap',
     },
     expTitle: {
       fontSize: '1.15rem',
@@ -88,6 +90,12 @@ export default function AboutSection() {
       borderRadius: '2rem',
       border: '1px solid rgba(249, 115, 22, 0.3)',
       whiteSpace: 'nowrap',
+    },
+    expPeriod: {
+      fontSize: '0.85rem',
+      color: '#94a3b8',
+      marginBottom: '0.75rem',
+      fontWeight: '500',
     },
     expDesc: {
       color: '#94a3b8',
@@ -144,17 +152,18 @@ export default function AboutSection() {
             </p>
           </div>
 
-          {/* Experience Side */}
+          {/* Experience Side (Dynamically mapped from portfolioData) */}
           <div style={styles.experienceColumn}>
-            <div style={styles.experienceCard}>
-              <div style={styles.expTopRow}>
-                <h3 style={styles.expTitle}>ICT Support & Industrial Attachment</h3>
-                <span style={styles.expBadge}>Afya Sacco Ltd</span>
+            {personalInfo.experience && personalInfo.experience.map((item, index) => (
+              <div key={index} style={styles.experienceCard}>
+                <div style={styles.expTopRow}>
+                  <h3 style={styles.expTitle}>{item.role}</h3>
+                  <span style={styles.expBadge}>{item.company}</span>
+                </div>
+                <div style={styles.expPeriod}>{item.period}</div>
+                <p style={styles.expDesc}>{item.description}</p>
               </div>
-              <p style={styles.expDesc}>
-                Acquired valuable enterprise IT experience within the ICT Department, managing hardware maintenance, local area network routing, IP configuration frameworks, and digital record systems.
-              </p>
-            </div>
+            ))}
           </div>
 
         </div>
