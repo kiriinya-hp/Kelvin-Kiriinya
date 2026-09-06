@@ -12,137 +12,54 @@ export default function Hero() {
       justifyContent: 'center',
       alignItems: 'center',
       textAlign: 'center',
-      padding: '0 1.5rem',
-      paddingTop: '8rem',
-      paddingBottom: '5rem',
+      padding: '6rem 1.25rem 4rem 1.25rem',
       position: 'relative',
       overflow: 'hidden',
     },
     glowOrbTop: {
       position: 'absolute',
-      top: '15%',
-      left: '10%',
-      width: '350px',
-      height: '350px',
-      background: 'radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, rgba(11, 15, 25, 0) 70%)',
+      top: '10%',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      width: '280px',
+      height: '280px',
+      background: 'radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, rgba(11, 15, 25, 0) 70%)',
       zIndex: 0,
       pointerEvents: 'none',
     },
     glowOrbBottom: {
       position: 'absolute',
-      bottom: '10%',
-      right: '10%',
-      width: '400px',
-      height: '400px',
+      bottom: '5%',
+      right: '5%',
+      width: '300px',
+      height: '300px',
       background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(11, 15, 25, 0) 70%)',
       zIndex: 0,
       pointerEvents: 'none',
     },
     contentWrapper: {
       display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+      flexDirection: 'column',
       alignItems: 'center',
-      maxWidth: '1150px',
+      maxWidth: '1100px',
       width: '100%',
       margin: '0 auto',
-      flexWrap: 'wrap-reverse',
-      gap: '4rem',
+      gap: '2.5rem',
       zIndex: 1,
     },
-    textSide: {
-      flex: '1 1 520px',
-      textAlign: 'left',
-    },
-    badge: {
-      display: 'inline-flex',
-      alignItems: 'center',
-      gap: '0.5rem',
-      backgroundColor: 'rgba(249, 115, 22, 0.1)',
-      border: '1px solid rgba(249, 115, 22, 0.3)',
-      color: '#f97316',
-      padding: '0.35rem 1rem',
-      borderRadius: '2rem',
-      fontSize: '0.85rem',
-      fontWeight: '600',
-      marginBottom: '1.5rem',
-      letterSpacing: '0.02em',
-    },
-    badgeDot: {
-      width: '8px',
-      height: '8px',
-      backgroundColor: '#25D366',
-      borderRadius: '50%',
-      boxShadow: '0 0 8px #25D366',
-    },
-    heading: {
-      fontSize: 'clamp(2.75rem, 5vw, 4rem)',
-      fontWeight: '800',
-      margin: '0 0 0.5rem 0',
-      letterSpacing: '-0.03em',
-      lineHeight: '1.1',
-    },
-    nameHighlight: {
-      background: 'linear-gradient(135deg, #ffffff 30%, #94a3b8 100%)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-    },
-    title: {
-      fontSize: '1.65rem',
-      fontWeight: '700',
-      background: 'linear-gradient(to right, #f97316, #fb923c)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-      marginBottom: '1.25rem',
-    },
-    bio: {
-      color: '#94a3b8',
-      fontSize: '1.05rem',
-      lineHeight: '1.8',
-      marginBottom: '2.5rem',
-      maxWidth: '540px',
-    },
-    buttonContainer: {
-      display: 'flex',
-      gap: '1rem',
-      flexWrap: 'wrap',
-    },
-    primaryBtn: {
-      backgroundColor: '#f97316',
-      color: '#ffffff',
-      padding: '0.875rem 2rem',
-      borderRadius: '0.5rem',
-      textDecoration: 'none',
-      fontWeight: '600',
-      fontSize: '0.95rem',
-      boxShadow: '0 10px 25px -5px rgba(249, 115, 22, 0.4)',
-      transition: 'all 0.3s ease',
-    },
-    secondaryBtn: {
-      backgroundColor: 'rgba(30, 41, 59, 0.6)',
-      color: '#ffffff',
-      padding: '0.875rem 2rem',
-      borderRadius: '0.5rem',
-      textDecoration: 'none',
-      fontWeight: '600',
-      fontSize: '0.95rem',
-      border: '1px solid #334155',
-      backdropFilter: 'blur(8px)',
-      transition: 'all 0.3s ease',
-    },
     imageSide: {
-      flex: '1 1 350px',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
       position: 'relative',
-      gap: '2rem',
+      gap: '1.5rem',
+      width: '100%',
     },
     ringWrapper: {
       position: 'relative',
-      width: '270px',
-      height: '270px',
+      width: '210px',
+      height: '210px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -157,37 +74,123 @@ export default function Hero() {
       WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
       WebkitMaskComposite: 'xor',
       maskComposite: 'exclude',
-      boxShadow: '0 0 35px rgba(249, 115, 22, 0.2)',
-      animation: 'pulse 3s infinite ease-in-out',
+      boxShadow: '0 0 30px rgba(249, 115, 22, 0.25)',
     },
     profileImage: {
-      width: '230px',
-      height: '230px',
+      width: '180px',
+      height: '180px',
       borderRadius: '50%',
       objectFit: 'cover',
       backgroundColor: '#1e293b',
       border: '4px solid rgba(30, 41, 59, 0.8)',
       zIndex: 1,
-      boxShadow: '0 20px 30px -10px rgba(0, 0, 0, 0.5)',
+      boxShadow: '0 15px 25px -10px rgba(0, 0, 0, 0.6)',
     },
     socialPills: {
       display: 'flex',
-      gap: '0.75rem',
+      gap: '0.5rem',
       flexWrap: 'wrap',
       justifyContent: 'center',
+      maxWidth: '360px',
     },
     socialLink: {
-      backgroundColor: 'rgba(15, 23, 42, 0.8)',
+      backgroundColor: 'rgba(15, 23, 42, 0.85)',
       border: '1px solid #1e293b',
       color: '#cbd5e1',
-      padding: '0.6rem 1.25rem',
+      padding: '0.5rem 0.9rem',
       borderRadius: '2rem',
-      fontSize: '0.875rem',
+      fontSize: '0.8rem',
       fontWeight: '500',
       textDecoration: 'none',
       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-      transition: 'all 0.2s ease',
     },
+    textSide: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      textAlign: 'center',
+      width: '100%',
+      maxWidth: '650px',
+    },
+    badge: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: '0.4rem',
+      backgroundColor: 'rgba(249, 115, 22, 0.1)',
+      border: '1px solid rgba(249, 115, 22, 0.3)',
+      color: '#f97316',
+      padding: '0.3rem 0.85rem',
+      borderRadius: '2rem',
+      fontSize: '0.78rem',
+      fontWeight: '600',
+      marginBottom: '1.25rem',
+      letterSpacing: '0.02em',
+    },
+    badgeDot: {
+      width: '7px',
+      height: '7px',
+      backgroundColor: '#25D366',
+      borderRadius: '50%',
+      boxShadow: '0 0 8px #25D366',
+    },
+    heading: {
+      fontSize: 'clamp(2.25rem, 7vw, 3.75rem)',
+      fontWeight: '800',
+      margin: '0 0 0.4rem 0',
+      letterSpacing: '-0.03em',
+      lineHeight: '1.15',
+    },
+    nameHighlight: {
+      background: 'linear-gradient(135deg, #ffffff 30%, #94a3b8 100%)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+    },
+    title: {
+      fontSize: 'clamp(1.25rem, 4vw, 1.6rem)',
+      fontWeight: '700',
+      background: 'linear-gradient(to right, #f97316, #fb923c)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      marginBottom: '1rem',
+    },
+    bio: {
+      color: '#94a3b8',
+      fontSize: '0.95rem',
+      lineHeight: '1.7',
+      marginBottom: '2rem',
+    },
+    buttonContainer: {
+      display: 'flex',
+      gap: '0.85rem',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      width: '100%',
+    },
+    primaryBtn: {
+      backgroundColor: '#f97316',
+      color: '#ffffff',
+      padding: '0.8rem 1.75rem',
+      borderRadius: '0.5rem',
+      textDecoration: 'none',
+      fontWeight: '600',
+      fontSize: '0.9rem',
+      boxShadow: '0 10px 25px -5px rgba(249, 115, 22, 0.4)',
+      flex: '1 1 140px',
+      maxWidth: '200px',
+    },
+    secondaryBtn: {
+      backgroundColor: 'rgba(30, 41, 59, 0.6)',
+      color: '#ffffff',
+      padding: '0.8rem 1.75rem',
+      borderRadius: '0.5rem',
+      textDecoration: 'none',
+      fontWeight: '600',
+      fontSize: '0.9rem',
+      border: '1px solid #334155',
+      backdropFilter: 'blur(8px)',
+      flex: '1 1 140px',
+      maxWidth: '200px',
+    }
   };
 
   return (
@@ -197,26 +200,7 @@ export default function Hero() {
       <div style={styles.glowOrbBottom}></div>
 
       <div style={styles.contentWrapper}>
-        <div style={styles.textSide}>
-          <div style={styles.badge}>
-            <span style={styles.badgeDot}></span>
-            Available for Opportunities & Projects
-          </div>
-          
-          <h1 style={styles.heading}>
-            Hi, I'm <span style={styles.nameHighlight}>{personalInfo.name}</span>
-          </h1>
-          <p style={styles.title}>{personalInfo.title}</p>
-          <p style={styles.bio}>
-            {personalInfo.bio} Student at {personalInfo.institution}. Crafting exceptional, secure, and scalable digital experiences from code to cloud.
-          </p>
-          
-          <div style={styles.buttonContainer}>
-            <a href="#projects" style={styles.primaryBtn}>Explore Projects</a>
-            <a href="#contact" style={styles.secondaryBtn}>Get in Touch</a>
-          </div>
-        </div>
-
+        {/* Profile Image & Quick Links Moved to Top for Mobile-First Flow */}
         <div style={styles.imageSide}>
           <div style={styles.ringWrapper}>
             <div style={styles.orangeRing}></div>
@@ -232,6 +216,27 @@ export default function Hero() {
             <a href={`tel:${personalInfo.phone}`} style={styles.socialLink}>Call</a>
             <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" style={styles.socialLink}>GitHub</a>
             <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" style={styles.socialLink}>LinkedIn</a>
+          </div>
+        </div>
+
+        {/* Text and Bio Details Stacked Below */}
+        <div style={styles.textSide}>
+          <div style={styles.badge}>
+            <span style={styles.badgeDot}></span>
+            Available for Opportunities & Projects
+          </div>
+          
+          <h1 style={styles.heading}>
+            Hi, I'm <span style={styles.nameHighlight}>{personalInfo.name}</span>
+          </h1>
+          <p style={styles.title}>{personalInfo.title}</p>
+          <p style={styles.bio}>
+            {personalInfo.bio} Student at {personalInfo.institution}[cite: 14]. Crafting exceptional, secure, and scalable digital experiences from code to cloud.
+          </p>
+          
+          <div style={styles.buttonContainer}>
+            <a href="#projects" style={styles.primaryBtn}>Explore Projects</a>
+            <a href="#contact" style={styles.secondaryBtn}>Get in Touch</a>
           </div>
         </div>
       </div>
