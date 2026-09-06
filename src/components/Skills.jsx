@@ -6,17 +6,17 @@ export default function Skills() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fade, setFade] = useState(true);
 
-  // Sequence controller: Lists skills -> Starts transition ticker -> Shows lists again when finished
+  // Sequence controller: Lists skills -> Starts transition ticker -> Shows list again when finished
   useEffect(() => {
     let tickerInterval;
     let sequenceTimeout;
 
     const runSequence = () => {
-      // Step 1: Show full skill lists for 4 seconds
+      // Step 1: Show full skill inventory list for 4 seconds
       setIsTranslating(false);
       
       sequenceTimeout = setTimeout(() => {
-        // Step 2: Hide lists and start translation/ticker mode
+        // Step 2: Hide list and start translation/ticker mode
         setIsTranslating(true);
         setCurrentIndex(0);
         setFade(true);
@@ -115,7 +115,7 @@ export default function Skills() {
     <section id="skills" style={styles.section}>
       <div style={styles.wrapper}>
         
-        {/* Full skill lists display when NOT in translation mode */}
+        {/* Full skill list displays when NOT in translation mode */}
         {!isTranslating && (
           <div>
             <div style={styles.heading}>Full Skill Inventory</div>
@@ -129,7 +129,7 @@ export default function Skills() {
           </div>
         )}
 
-        {/* Real-time translation ticker activates when the static lists disappear */}
+        {/* Real-time translation ticker activates when the static list disappears */}
         {isTranslating && (
           <div style={styles.tickerContainer}>
             <div style={{ ...styles.heading, marginBottom: '0.75rem' }}>Live Skill Spotlight & Translation</div>
@@ -141,20 +141,6 @@ export default function Skills() {
               }}
             >
               {skills[currentIndex]}
-            </div>
-          </div>
-        )}
-
-        {/* Full skill lists reappear after the translation ticker ends */}
-        {!isTranslating && (
-          <div>
-            <div style={styles.heading}>Complete Tech Stack</div>
-            <div style={styles.grid}>
-              {skills.map((skill, index) => (
-                <div key={`post-${index}`} style={styles.pill}>
-                  {skill}
-                </div>
-              ))}
             </div>
           </div>
         )}
