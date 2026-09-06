@@ -130,61 +130,89 @@ export default function AboutSection() {
   };
 
   return (
-    <section id="about-me" style={styles.section}>
-      <div style={styles.container}>
-        
-        {/* Section Heading */}
-        <div style={styles.headerWrapper}>
-          <div style={styles.subtitle}>System Architecture & Background</div>
-          <h2 style={styles.heading}>About Me</h2>
-        </div>
+    <>
+      <style>{`
+        @media (max-width: 900px) {
+          .about-section {
+            padding: 4rem 1rem !important;
+          }
+          .about-header-wrapper {
+            padding-left: 1rem !important;
+          }
+          .about-heading {
+            font-size: 2rem !important;
+          }
+          .about-content-grid {
+            gap: 2rem !important;
+          }
+          .about-experience-card {
+            padding: 1.25rem !important;
+          }
+          .about-stat-card {
+            padding: 1.25rem !important;
+          }
+          .about-stat-number {
+            font-size: 2rem !important;
+          }
+        }
+      `}</style>
 
-        {/* Main Split Grid (Bio & Professional Experience) */}
-        <div style={styles.contentGrid}>
+      <section id="about-me" className="about-section" style={styles.section}>
+        <div style={styles.container}>
           
-          {/* Bio Side */}
-          <div style={styles.bioColumn}>
-            <p style={styles.text}>
-              {personalInfo.bio} Student at {personalInfo.institution}.
-            </p>
-            <p style={styles.text}>
-              I started my journey into tech with a strong drive for learning how systems work from scratch. Since then, this has evolved into full-stack development and hands-on ICT support, fueling my dedication to engineering clean, reliable solutions.
-            </p>
+          {/* Section Heading */}
+          <div className="about-header-wrapper" style={styles.headerWrapper}>
+            <div style={styles.subtitle}>System Architecture & Background</div>
+            <h2 className="about-heading" style={styles.heading}>About Me</h2>
           </div>
 
-          {/* Experience Side (Dynamically mapped from portfolioData) */}
-          <div style={styles.experienceColumn}>
-            {personalInfo.experience && personalInfo.experience.map((item, index) => (
-              <div key={index} style={styles.experienceCard}>
-                <div style={styles.expTopRow}>
-                  <h3 style={styles.expTitle}>{item.role}</h3>
-                  <span style={styles.expBadge}>{item.company}</span>
+          {/* Main Split Grid (Bio & Professional Experience) */}
+          <div className="about-content-grid" style={styles.contentGrid}>
+            
+            {/* Bio Side */}
+            <div style={styles.bioColumn}>
+              <p style={styles.text}>
+                {personalInfo.bio} Student at {personalInfo.institution}.
+              </p>
+              <p style={styles.text}>
+                I started my journey into tech with a strong drive for learning how systems work from scratch. Since then, this has evolved into full-stack development and hands-on ICT support, fueling my dedication to engineering clean, reliable solutions.
+              </p>
+            </div>
+
+            {/* Experience Side (Dynamically mapped from portfolioData) */}
+            <div style={styles.experienceColumn}>
+              {personalInfo.experience && personalInfo.experience.map((item, index) => (
+                <div key={index} className="about-experience-card" style={styles.experienceCard}>
+                  <div style={styles.expTopRow}>
+                    <h3 style={styles.expTitle}>{item.role}</h3>
+                    <span style={styles.expBadge}>{item.company}</span>
+                  </div>
+                  <div style={styles.expPeriod}>{item.period}</div>
+                  <p style={styles.expDesc}>{item.description}</p>
                 </div>
-                <div style={styles.expPeriod}>{item.period}</div>
-                <p style={styles.expDesc}>{item.description}</p>
-              </div>
-            ))}
+              ))}
+            </div>
+
+          </div>
+
+          {/* Stats Grid */}
+          <div style={styles.statsContainer}>
+            <div className="about-stat-card" style={styles.statCard}>
+              <div className="about-stat-number" style={styles.statNumber}>120+</div>
+              <div style={styles.statLabel}>Completed Projects</div>
+            </div>
+            <div className="about-stat-card" style={styles.statCard}>
+              <div className="about-stat-number" style={styles.statNumber}>95%</div>
+              <div style={styles.statLabel}>Client Satisfaction</div>
+            </div>
+            <div className="about-stat-card" style={styles.statCard}>
+              <div className="about-stat-number" style={styles.statNumber}>2+</div>
+              <div style={styles.statLabel}>Years of Experience</div>
+            </div>
           </div>
 
         </div>
-
-        {/* Stats Grid */}
-        <div style={styles.statsContainer}>
-          <div style={styles.statCard}>
-            <div style={styles.statNumber}>120+</div>
-            <div style={styles.statLabel}>Completed Projects</div>
-          </div>
-          <div style={styles.statCard}>
-            <div style={styles.statNumber}>95%</div>
-            <div style={styles.statLabel}>Client Satisfaction</div>
-          </div>
-          <div style={styles.statCard}>
-            <div style={styles.statNumber}>2+</div>
-            <div style={styles.statLabel}>Years of Experience</div>
-          </div>
-        </div>
-
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
