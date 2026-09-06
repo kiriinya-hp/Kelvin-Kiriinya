@@ -36,9 +36,10 @@ export default function Hero() {
       zIndex: 0,
       pointerEvents: 'none',
     },
+    // Using CSS media query approach via flex-wrap and responsive styles or standard className hooks, 
+    // but keeping inline style structure clean by utilizing a class-based toggle or media query handling container:
     contentWrapper: {
       display: 'flex',
-      flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
       maxWidth: '1150px',
@@ -188,52 +189,82 @@ export default function Hero() {
   };
 
   return (
-    <section id="about" style={styles.hero}>
-      {/* Background ambient lighting effects */}
-      <div style={styles.glowOrbTop}></div>
-      <div style={styles.glowOrbBottom}>Button</div>
+    <>
+      <style>{`
+        @media (max-width: 900px) {
+          .hero-content-wrapper {
+            flex-direction: column-reverse !important;
+            text-align: center !important;
+            gap: 2.5rem !important;
+          }
+          .hero-text-side {
+            align-items: center !important;
+            text-align: center !important;
+          }
+          .hero-bio {
+            text-align: center !important;
+          }
+          .hero-button-container {
+            justify-content: center !important;
+          }
+          .hero-ring-wrapper {
+            width: 210px !important;
+            height: 210px !important;
+          }
+          .hero-profile-image {
+            width: 180px !important;
+            height: 180px !important;
+          }
+        }
+      `}</style>
 
-      <div style={styles.contentWrapper}>
-        {/* Left Side: Professional Text & Action Layout for Large Screens */}
-        <div style={styles.textSide}>
-          <div style={styles.badge}>
-            <span style={styles.badgeDot}></span>
-            Available for Opportunities & Projects
+      <section id="about" style={styles.hero}>
+        <div style={styles.glowOrbTop}></div>
+        <div style={styles.glowOrbBottom}></div>
+
+        <div className="hero-content-wrapper" style={styles.contentWrapper}>
+          {/* Text Side (Left on Desktop, Bottom on Mobile) */}
+          <div className="hero-text-side" style={styles.textSide}>
+            <div style={styles.badge}>
+              <span style={styles.badgeDot}></span>
+              Available for Opportunities & Projects
+            </div>
+            
+            <h1 style={styles.heading}>
+              Hi, I'm <span style={styles.nameHighlight}>{personalInfo.name}</span>
+            </h1>
+            <p style={styles.title}>{personalInfo.title}</p>
+            <p className="hero-bio" style={styles.bio}>
+              {personalInfo.bio} Student at {personalInfo.institution}[cite: 14]. Crafting exceptional, secure, and scalable digital experiences from code to cloud.
+            </p>
+            
+            <div className="hero-button-container" style={styles.buttonContainer}>
+              <a href="#projects" style={styles.primaryBtn}>Explore Projects</a>
+              <a href="#contact" style={styles.secondaryBtn}>Get in Touch</a>
+            </div>
           </div>
-          
-          <h1 style={styles.heading}>
-            Hi, I'm <span style={styles.nameHighlight}>{personalInfo.name}</span>
-          </h1>
-          <p style={styles.title}>{personalInfo.title}</p>
-          <p style={styles.bio}>
-            {personalInfo.bio} Student at {personalInfo.institution}[cite: 14]. Crafting exceptional, secure, and scalable digital experiences from code to cloud.
-          </p>
-          
-          <div style={styles.buttonContainer}>
-            <a href="#projects" style={styles.primaryBtn}>Explore Projects</a>
-            <a href="#contact" style={styles.secondaryBtn}>Get in Touch</a>
+
+          {/* Image & Social Side (Right on Desktop, Top on Mobile) */}
+          <div style={styles.imageSide}>
+            <div className="hero-ring-wrapper" style={styles.ringWrapper}>
+              <div style={styles.orangeRing}></div>
+              <img 
+                src="kelvin.jpeg" 
+                alt={personalInfo.name} 
+                className="hero-profile-image"
+                style={styles.profileImage}
+              />
+            </div>
+
+            <div style={styles.socialPills}>
+              <a href={`mailto:${personalInfo.email}`} style={styles.socialLink}>Email</a>
+              <a href={`tel:${personalInfo.phone}`} style={styles.socialLink}>Call</a>
+              <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" style={styles.socialLink}>GitHub</a>
+              <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" style={styles.socialLink}>LinkedIn</a>
+            </div>
           </div>
         </div>
-
-        {/* Right Side: Profile Image & Floating Contact Pills for Large Screens */}
-        <div style={styles.imageSide}>
-          <div style={styles.ringWrapper}>
-            <div style={styles.orangeRing}></div>
-            <img 
-              src="kelvin.jpeg" 
-              alt={personalInfo.name} 
-              style={styles.profileImage}
-            />
-          </div>
-
-          <div style={styles.socialPills}>
-            <a href={`mailto:${personalInfo.email}`} style={styles.socialLink}>Email</a>
-            <a href={`tel:${personalInfo.phone}`} style={styles.socialLink}>Call</a>
-            <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" style={styles.socialLink}>GitHub</a>
-            <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" style={styles.socialLink}>LinkedIn</a>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
