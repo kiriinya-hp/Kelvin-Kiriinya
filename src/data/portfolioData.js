@@ -11,7 +11,7 @@ export const personalInfo = {
     {
       role: "IT Support Intern / Industrial Attachment",
       company: "Afya Sacco Ltd",
-      period: "May 2026 – Present",
+      period: "May 2026 – september 2026",
       description: "Handling hardware maintenance, local area network (LAN) routing, IP configuration frameworks, and digital record systems."
     }
   ]

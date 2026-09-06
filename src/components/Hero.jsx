@@ -34,13 +34,16 @@ export default function Hero() {
     imageSide: {
       flex: '1 1 350px',
       display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
       justifyContent: 'center',
       position: 'relative',
+      gap: '1.5rem',
     },
     ringWrapper: {
       position: 'relative',
-      width: '260px',
-      height: '260px',
+      width: '240px',
+      height: '240px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -54,12 +57,29 @@ export default function Hero() {
       boxShadow: '0 0 25px rgba(249, 115, 22, 0.25)',
     },
     profileImage: {
-      width: '220px',
-      height: '220px',
+      width: '200px',
+      height: '200px',
       borderRadius: '50%',
       objectFit: 'cover',
       backgroundColor: '#1e293b',
       zIndex: 1,
+    },
+    socialPills: {
+      display: 'flex',
+      gap: '0.75rem',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+    },
+    socialLink: {
+      backgroundColor: 'rgba(30, 41, 59, 0.7)',
+      border: '1px solid #334155',
+      color: '#cbd5e1',
+      padding: '0.5rem 1rem',
+      borderRadius: '2rem',
+      fontSize: '0.85rem',
+      fontWeight: '500',
+      textDecoration: 'none',
+      transition: 'all 0.2s ease',
     },
     greeting: {
       fontSize: '1.25rem',
@@ -91,6 +111,7 @@ export default function Hero() {
     buttonContainer: {
       display: 'flex',
       gap: '1rem',
+      flexWrap: 'wrap',
     },
     primaryBtn: {
       backgroundColor: '#f97316',
@@ -124,12 +145,12 @@ export default function Hero() {
           </h1>
           <p style={styles.title}>{personalInfo.title}</p>
           <p style={styles.bio}>
-            {personalInfo.bio} Student at {personalInfo.institution}.
+            {personalInfo.bio} Student at {personalInfo.institution}[cite: 14].
           </p>
           
           <div style={styles.buttonContainer}>
             <a href="#projects" style={styles.primaryBtn}>Got a project?</a>
-            <a href="#contact" style={styles.secondaryBtn}>My resume</a>
+            <a href="#contact" style={styles.secondaryBtn}>Get in Touch</a>
           </div>
         </div>
 
@@ -141,6 +162,13 @@ export default function Hero() {
               alt={personalInfo.name} 
               style={styles.profileImage}
             />
+          </div>
+
+          <div style={styles.socialPills}>
+            <a href={`mailto:${personalInfo.email}`} style={styles.socialLink}>Email</a>
+            <a href={`tel:${personalInfo.phone}`} style={styles.socialLink}>Call</a>
+            <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" style={styles.socialLink}>GitHub</a>
+            <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" style={styles.socialLink}>LinkedIn</a>
           </div>
         </div>
       </div>
