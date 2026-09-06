@@ -5,7 +5,7 @@ export default function Skills() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fade, setFade] = useState(true);
 
-  // Real-time cycling highlight/ticker feature for mobile view
+  // Real-time cycling highlight/ticker feature for mobile and desktop views
   useEffect(() => {
     const interval = setInterval(() => {
       setFade(false);
@@ -15,22 +15,35 @@ export default function Skills() {
       }, 300);
     }, 2500);
     return () => clearInterval(interval);
-  }, []);
+  }, [skills.length]);
 
   const styles = {
     section: {
-      padding: '4rem 2rem',
+      padding: '5rem 2rem',
       backgroundColor: '#0b0f19',
       color: '#ffffff',
       textAlign: 'center',
+    },
+    wrapper: {
+      maxWidth: '800px',
+      margin: '0 auto',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '3rem',
+    },
+    heading: {
+      fontSize: '1rem',
+      textTransform: 'uppercase',
+      letterSpacing: '0.1em',
+      color: '#f97316',
+      fontWeight: '700',
+      marginBottom: '1.5rem',
     },
     grid: {
       display: 'flex',
       flexWrap: 'wrap',
       justifyContent: 'center',
-      gap: '1.5rem',
-      maxWidth: '800px',
-      margin: '0 auto',
+      gap: '1rem',
     },
     pill: {
       backgroundColor: '#0f172a',
@@ -41,69 +54,52 @@ export default function Skills() {
       fontWeight: '500',
       color: '#94a3b8',
       transition: 'all 0.3s ease',
+    },
+    tickerContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: '130px',
+      padding: '1.5rem 1rem',
+      background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.9) 100%)',
+      border: '1px solid #1e293b',
+      borderRadius: '1rem',
+      boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.4)',
+      position: 'relative',
+      overflow: 'hidden',
+    },
+    tickerItem: {
+      fontSize: '1.35rem',
+      fontWeight: '700',
+      color: '#ffffff',
+      transition: 'opacity 0.3s ease, transform 0.3s ease',
+      letterSpacing: '-0.01em',
     }
   };
 
   return (
-    <>
-      <style>{`
-        /* Hide mobile spotlight ticker by default on desktop */
-        .mobile-skills-ticker {
-          display: none;
-        }
-
-        @media (max-width: 768px) {
-          .skills-desktop-grid {
-            display: none !important;
-          }
-          .mobile-skills-ticker {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
-            min-height: 140px !important;
-            padding: 1.5rem 1rem !important;
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.9) 100%) !important;
-            border: 1px solid #1e293b !important;
-            border-radius: 1rem !important;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4) !important;
-            position: relative !important;
-            overflow: hidden !important;
-          }
-          .ticker-title {
-            font-size: 0.75rem !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.1em !important;
-            color: #f97316 !important;
-            font-weight: 700 !important;
-            margin-bottom: 0.75rem !important;
-          }
-          .ticker-item {
-            font-size: 1.25rem !important;
-            font-weight: 700 !important;
-            color: #ffffff !important;
-            transition: opacity 0.3s ease, transform 0.3s ease !important;
-            letter-spacing: -0.01em !important;
-          }
-        }
-      `}</style>
-
-      <section id="skills" style={styles.section}>
-        {/* Desktop Layout (Untouched) */}
-        <div className="skills-desktop-grid" style={styles.grid}>
-          {skills.map((skill, index) => (
-            <div key={index} style={styles.pill}>
-              {skill}
-            </div>
-          ))}
+    <section id="skills" style={styles.section}>
+      <div style={styles.wrapper}>
+        
+        {/* 1. List of all skills BEFORE the translation/ticker */}
+        <div>
+          <div style={styles.heading}>Full Skill Inventory</div>
+          <div style={styles.grid}>
+            {skills.map((skill, index) => (
+              <div key={`pre-${index}`} style={styles.pill}>
+                {skill}
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Professional Real-time Animated Mobile Layout */}
-        <div className="mobile-skills-ticker">
-          <div className="ticker-title">Core Expertise & Tech Stack</div>
+        {/* 2. Real-time translation/ticker running across both mobile and big screens */}
+        <div style={styles.tickerContainer}>
+          <div style={{ ...styles.heading, marginBottom: '0.75rem' }}>Live Skill Spotlight</div>
           <div 
-            className="ticker-item" 
             style={{ 
+              ...styles.tickerItem, 
               opacity: fade ? 1 : 0, 
               transform: fade ? 'translateY(0)' : 'translateY(8px)' 
             }}
@@ -111,7 +107,20 @@ export default function Skills() {
             {skills[currentIndex]}
           </div>
         </div>
-      </section>
-    </>
+
+        {/* 3. List of all skills AFTER the translation/ticker */}
+        <div>
+          <div style={styles.heading}>Complete Tech Stack</div>
+          <div style={styles.grid}>
+            {skills.map((skill, index) => (
+              <div key={`post-${index}`} style={styles.pill}>
+                {skill}
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
   );
 }
