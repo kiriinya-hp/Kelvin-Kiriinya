@@ -36,8 +36,6 @@ export default function Hero() {
       zIndex: 0,
       pointerEvents: 'none',
     },
-    // Using CSS media query approach via flex-wrap and responsive styles or standard className hooks, 
-    // but keeping inline style structure clean by utilizing a class-based toggle or media query handling container:
     contentWrapper: {
       display: 'flex',
       justifyContent: 'space-between',
@@ -96,17 +94,18 @@ export default function Hero() {
     },
     socialPills: {
       display: 'flex',
-      gap: '0.75rem',
+      gap: '0.5rem',
       flexWrap: 'wrap',
       justifyContent: 'center',
+      maxWidth: '340px',
     },
     socialLink: {
       backgroundColor: 'rgba(15, 23, 42, 0.85)',
       border: '1px solid #1e293b',
       color: '#cbd5e1',
-      padding: '0.6rem 1.25rem',
+      padding: '0.45rem 0.95rem',
       borderRadius: '2rem',
-      fontSize: '0.875rem',
+      fontSize: '0.8rem',
       fontWeight: '500',
       textDecoration: 'none',
       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
@@ -192,38 +191,56 @@ export default function Hero() {
     <>
       <style>{`
         @media (max-width: 900px) {
+          .hero-section {
+            padding: 5rem 1rem 3rem 1rem !important;
+          }
           .hero-content-wrapper {
             flex-direction: column-reverse !important;
             text-align: center !important;
-            gap: 2.5rem !important;
+            gap: 2rem !important;
           }
           .hero-text-side {
             align-items: center !important;
             text-align: center !important;
+            width: 100% !important;
           }
           .hero-bio {
             text-align: center !important;
+            font-size: 0.95rem !important;
+            margin-bottom: 2rem !important;
           }
           .hero-button-container {
             justify-content: center !important;
+            width: 100% !important;
+            gap: 0.75rem !important;
+          }
+          .hero-button-container a {
+            flex: 1 1 130px !important;
+            padding: 0.75rem 1rem !important;
+            font-size: 0.85rem !important;
+            text-align: center !important;
           }
           .hero-ring-wrapper {
-            width: 210px !important;
-            height: 210px !important;
+            width: 200px !important;
+            height: 200px !important;
           }
           .hero-profile-image {
-            width: 180px !important;
-            height: 180px !important;
+            width: 170px !important;
+            height: 170px !important;
+          }
+          .hero-social-pills {
+            max-width: 300px !important;
+            gap: 0.4rem !important;
           }
         }
       `}</style>
 
-      <section id="about" style={styles.hero}>
+      <section id="about" className="hero-section" style={styles.hero}>
         <div style={styles.glowOrbTop}></div>
         <div style={styles.glowOrbBottom}></div>
 
         <div className="hero-content-wrapper" style={styles.contentWrapper}>
-          {/* Text Side (Left on Desktop, Bottom on Mobile) */}
+          {/* Text Side */}
           <div className="hero-text-side" style={styles.textSide}>
             <div style={styles.badge}>
               <span style={styles.badgeDot}></span>
@@ -235,7 +252,7 @@ export default function Hero() {
             </h1>
             <p style={styles.title}>{personalInfo.title}</p>
             <p className="hero-bio" style={styles.bio}>
-              {personalInfo.bio} Student at {personalInfo.institution}[cite: 14]. Crafting exceptional, secure, and scalable digital experiences from code to cloud.
+              {personalInfo.bio} Student at {personalInfo.institution}. Crafting exceptional, secure, and scalable digital experiences from code to cloud.
             </p>
             
             <div className="hero-button-container" style={styles.buttonContainer}>
@@ -244,7 +261,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Image & Social Side (Right on Desktop, Top on Mobile) */}
+          {/* Image & Social Side */}
           <div style={styles.imageSide}>
             <div className="hero-ring-wrapper" style={styles.ringWrapper}>
               <div style={styles.orangeRing}></div>
@@ -256,7 +273,7 @@ export default function Hero() {
               />
             </div>
 
-            <div style={styles.socialPills}>
+            <div className="hero-social-pills" style={styles.socialPills}>
               <a href={`mailto:${personalInfo.email}`} style={styles.socialLink}>Email</a>
               <a href={`tel:${personalInfo.phone}`} style={styles.socialLink}>Call</a>
               <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" style={styles.socialLink}>GitHub</a>
