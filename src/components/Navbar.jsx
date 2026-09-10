@@ -79,6 +79,7 @@ export default function Navbar() {
         <a href="#about" style={styles.link} onClick={() => setIsOpen(false)}>Home</a>
         <a href="#about-me" style={styles.link} onClick={() => setIsOpen(false)}>About</a>
         <a href="#projects" style={styles.link} onClick={() => setIsOpen(false)}>Projects</a>
+        <a href="#services" style={styles.link} onClick={() => setIsOpen(false)}>Services</a>
         <a href="#contact" style={styles.link} onClick={() => setIsOpen(false)}>Contact</a>
       </div>
     </nav>
