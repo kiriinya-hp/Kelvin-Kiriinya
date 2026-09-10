@@ -1,6 +1,6 @@
 import React from 'react';
 import { personalInfo } from '../data/portfolioData';
-import AvailabilityBadge from './AvailabilityBadge'
+
 
 export default function Hero() {
   const styles = {
@@ -243,7 +243,6 @@ export default function Hero() {
         <div className="hero-content-wrapper" style={styles.contentWrapper}>
           {/* Text Side */}
           <div className="hero-text-side" style={styles.textSide}>
-            <AvailabilityBadge />
             <div style={styles.badge}>
               <span style={styles.badgeDot}></span>
               Available for Opportunities & Projects
