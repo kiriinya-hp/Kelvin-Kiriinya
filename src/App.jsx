@@ -5,6 +5,7 @@ import AboutSection from './components/AboutSection';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import Services from './components/Services';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Hero />
       <AboutSection />
       <Skills />
+      <Services />
       <Projects />
       <Contact />
       

@@ -26,22 +26,7 @@ export const projects = [
     liveLink: "https://triple-crown-store.web.app/",
     githubLink: "https://github.com/kiriinya-hp",
   },
-  {
-    id: 2,
-    title: "University Portal Clone",
-    description: "A student management system prototype featuring course registration and grade tracking.",
-    techStack: ["React", "Node.js", "Express", "MongoDB"],
-    liveLink: "#",
-    githubLink: "https://github.com/kiriinya-hp",
-  },
-  {
-    id: 3,
-    title: "E-Commerce API",
-    description: "A robust RESTful backend service for online stores with authentication and payment integration.",
-    techStack: ["Node.js", "Express", "PostgreSQL", "JWT"],
-    liveLink: "#",
-    githubLink: "https://github.com/kiriinya-hp",
-  },
+  
 ];
 
 export const skills = [
