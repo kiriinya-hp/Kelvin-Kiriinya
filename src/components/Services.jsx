@@ -5,22 +5,30 @@ export default function Services() {
     {
       title: "School Projects Development",
       description: "Assisting with coding, structuring, and developing academic and school-related programming projects to meet grading and technical criteria.",
-      icon: "🎓"
+      icon: "🎓",
+      price: "From KES 2,500",
+      whatsappMsg: "Hi Kelvin, I'm interested in getting help with a School Project. Let's discuss details!"
     },
     {
       title: "Portfolio Development",
       description: "Designing and building modern, responsive, and custom developer or professional portfolios to showcase your projects and stand out.",
-      icon: "💼"
+      icon: "💼",
+      price: "From KES 3,500",
+      whatsappMsg: "Hi Kelvin, I would like to get a custom Portfolio developed. Let's talk!"
     },
     {
       title: "Full-Stack Web Development",
       description: "Building responsive, high-performance web applications from front-end interfaces to back-end databases and APIs.",
-      icon: "💻"
+      icon: "💻",
+      price: "Custom Quote",
+      whatsappMsg: "Hi Kelvin, I need a Full-Stack Web Development service for my project. Let's chat!"
     },
     {
       title: "System Architecture & Design",
       description: "Designing clean, scalable, and secure system workflows and architectures tailored to specific project requirements.",
-      icon: "⚡"
+      icon: "⚡",
+      price: "Custom Quote",
+      whatsappMsg: "Hi Kelvin, I'm looking for System Architecture & Design support. Let's connect!"
     }
   ];
 
@@ -64,13 +72,19 @@ export default function Services() {
       textAlign: 'left',
       display: 'flex',
       flexDirection: 'column',
-      gap: '1rem',
+      justifyContent: 'space-between',
+      gap: '1.25rem',
       boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3)',
       transition: 'transform 0.3s ease, border-color 0.3s ease',
     },
+    cardTop: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '1rem',
+    },
     iconWrapper: {
       fontSize: '2rem',
-      marginBottom: '0.5rem',
+      marginBottom: '0.25rem',
     },
     serviceTitle: {
       fontSize: '1.25rem',
@@ -82,6 +96,33 @@ export default function Services() {
       fontSize: '0.95rem',
       lineHeight: '1.6',
     },
+    priceTag: {
+      display: 'inline-block',
+      backgroundColor: 'rgba(249, 115, 22, 0.1)',
+      color: '#f97316',
+      fontSize: '0.85rem',
+      fontWeight: '600',
+      padding: '0.3rem 0.75rem',
+      borderRadius: '2rem',
+      border: '1px solid rgba(249, 115, 22, 0.3)',
+      alignSelf: 'flex-start',
+    },
+    ctaButton: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '0.5rem',
+      backgroundColor: '#25D366',
+      color: '#ffffff',
+      padding: '0.65rem 1rem',
+      borderRadius: '0.5rem',
+      textDecoration: 'none',
+      fontWeight: '600',
+      fontSize: '0.9rem',
+      transition: 'background-color 0.2s ease',
+      boxShadow: '0 4px 12px rgba(37, 211, 102, 0.3)',
+      marginTop: 'auto',
+    }
   };
 
   return (
@@ -91,13 +132,30 @@ export default function Services() {
         <h2 style={styles.heading}>Services Provided</h2>
         
         <div style={styles.grid}>
-          {servicesList.map((service, index) => (
-            <div key={index} style={styles.card}>
-              <div style={styles.iconWrapper}>{service.icon}</div>
-              <h3 style={styles.serviceTitle}>{service.title}</h3>
-              <p style={styles.description}>{service.description}</p>
-            </div>
-          ))}
+          {servicesList.map((service, index) => {
+            const encodedMessage = encodeURIComponent(service.whatsappMsg);
+            const whatsappLink = `https://wa.me/254797722331?text=${encodedMessage}`;
+
+            return (
+              <div key={index} style={styles.card}>
+                <div style={styles.cardTop}>
+                  <div style={styles.iconWrapper}>{service.icon}</div>
+                  <h3 style={styles.serviceTitle}>{service.title}</h3>
+                  <p style={styles.description}>{service.description}</p>
+                  <span style={styles.priceTag}>{service.price}</span>
+                </div>
+                
+                <a 
+                  href={whatsappLink} 
+                  style={styles.ctaButton}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  💬 Inquire via WhatsApp
+                </a>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
