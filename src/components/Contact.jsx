@@ -105,15 +105,16 @@ export const Contact = () => {
 
                 {/* Phone Item */}
                 <div className="flex items-center justify-between p-4 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-slate-700 transition-all">
-                  <div className="flex items-center gap-3.5">
+                  <div className="flex items-center gap-3.5 overflow-hidden">
                     <div className="w-10 h-10 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0">
                       <Phone className="w-5 h-5" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <p className="text-xs text-slate-400 font-medium">Phone / Mobile</p>
-                      <a href={`tel:${personal.phone}`} className="text-sm font-semibold text-white hover:text-blue-400">
-                        {personal.phone} ({personal.internationalPhone})
+                      <a href={`tel:${personal.phone}`} className="text-sm font-semibold text-white hover:text-blue-400 block truncate">
+                        {personal.phone}
                       </a>
+                      <span className="text-xs text-slate-400">{personal.internationalPhone}</span>
                     </div>
                   </div>
                   <button

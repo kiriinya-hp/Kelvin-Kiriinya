@@ -84,6 +84,17 @@ export const portfolioData = {
       githubLink: "https://github.com/kiriinya-hp",
       featured: true,
       badge: "Academic & Enterprise"
+    },
+    {
+      id: "agrilink",
+      title: "AgriLink",
+      subtitle: "Agricultural Marketplace & Farm Management",
+      description: "A full-stack agricultural platform connecting farmers, buyers, and agri-service providers. Features real-time listings, farm produce management, and a seamless marketplace for Kenya's agricultural sector.",
+      techStack: ["React", "Node.js", "Express", "MongoDB", "Render"],
+      liveLink: "https://agrilink-pyrv.onrender.com",
+      githubLink: "https://github.com/kiriinya-hp",
+      featured: true,
+      badge: "Live Platform"
     }
   ],
   services: [
