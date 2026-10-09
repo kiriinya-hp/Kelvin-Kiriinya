@@ -74,17 +74,7 @@ export const portfolioData = {
       featured: true,
       badge: "Production"
     },
-    {
-      id: "academic-portal",
-      title: "Student Project Management System",
-      subtitle: "Full-Stack System Architecture",
-      description: "A centralized platform helping students and faculties manage milestones, submission reviews, and documentation grading workflows with secure authentication.",
-      techStack: ["React", "Node.js", "Express", "MongoDB"],
-      liveLink: "https://github.com/kiriinya-hp",
-      githubLink: "https://github.com/kiriinya-hp",
-      featured: true,
-      badge: "Academic & Enterprise"
-    },
+    
     {
       id: "agrilink",
       title: "AgriLink",
